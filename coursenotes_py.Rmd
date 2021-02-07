@@ -1,0 +1,88 @@
+IMB/Edx Python course notes
+===========================
+
+Course Notes for the IMB python short course
+
+```{python}
+print( "hello world" )
+```
+
+Again, looks like I should be pretty familiar with all this stuff. I need to start actually coding.
+
+[//]: # ( OK, I think I see the problem now, when I start Rmd. python won't start --- WHY!? )
+[//]: # ( Same thing happened when I tried to execute a .py program from the command line -- I need to fix this )
+
+Before I finish this course:
+
+- Get python working (maybe it needs to be running inside a conda environment?)
+- Get python scripts executing from the command line
+
+Module 1
+--------
+
+Python Basics: 
+
+### types ###
+
+Pretty straightforwards stuff.
+
+integers, floats, strings and booleans.
+
+You can make conversions between types - python is pretty clever - and can even convert strings to integers (assuming the string is an integer), like
+
+```{python}
+int('1')
+```
+
+Will convert '1', into the integer 1.
+
+Floats to integers drops the decimal, and thus loses information.
+
+You can't convert lettersa and symbols to ints (but what about ACII codes?)
+
+Booleans are either true (1) or false (0).
+
+### Expressions ###
+
+Just basic operations.
+
+Variable assignment
+
+```{python}
+my_variable = 1
+my_variable:1 # will apparently 'denote' the variable, which I'm wondering how this is different from assignment??
+```
+
+More straightforward stuff.
+
+### Strings ###
+
+Each element in a string is indexed by integers, either positive or negative.
+
+String operations are fairly intuitive.
+
+    3 * x == xxx
+
+You cannot 'add' a string, but you can add *to* a string.
+
+`3 + x` -- returns an error
+
+But `'3' + x` -- adds the number '3' to the string
+
+Backslashes `\`, as usual are escape characters.
+
+Slicing can be done using indexes.
+
+```{python}
+a = 'the cat in the hat '
+a[::2] # Take every second character starting from one -- THIS IS A STRIDE VALUE
+# 'tecti h a '
+a[0:5:2] # Take from 0 to 5, and return every second character - this is slicing
+# 'tec'
+
+"345678".find('3') # Ah I see -- 'return index value of string '3'
+```
+
+
+
+
