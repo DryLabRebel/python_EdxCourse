@@ -83,6 +83,111 @@ a[0:5:2] # Take from 0 to 5, and return every second character - this is slicing
 "345678".find('3') # Ah I see -- 'return index value of string '3'
 ```
 
+Module 2
+--------
+
+Lists and tuples.
+
+
+Tuples are ordered lists, defined by parentheses.
+
+Tuples can be made of strings, integers, floats, etc. and any combination of these.
+
+A tuple is always of type: tuple.
+
+Tuples can be sliced and concatenated.
+
+```{python}
+tuple1 = (1,2,3,4)
+tuple2 = ('cat','dog',5.3)
+
+tuple1 + tuple2 = tuple3
+
+tuple3 =  (1,2,3,4,'cat','dog',5.3)
+
+tuple3[2:4]
+
+# (3,4,'cat')
+
+tuple4 = (5,3.2,9,"letter opener",tuple3)
+
+tuple4[4][5][1]
+
+# o
+
+```
+
+So tuples can be nested. Which is even more powerful than it sounds.
+
+From what I can gather, this is the equivalent of creating a list in R.
+
+We can index down to the atomic level, even within strings.
+
+Lists are like tuples, but mutable.
+
+```{python}
+
+list1 = ["Michael Jackson", 10.1, 1982]
+
+list1.extend(["pop", 10])
+
+list1 = ["Michael Jackson", 10.1, 1982, "pop", 10]
+
+list1.append(["pop", 10])
+
+list1 = ["Michael Jackson", 10.1, 1982, "pop", 10, ["pop", 10]]
+
+list1[3] = "soda"
+
+list1 = ["Michael Jackson", 10.1, 1982, "soda", 10, ["pop", 10]]
+
+del(list1[1])
+
+list1 = ["Michael Jackson", 1982, "soda", 10, ["pop", 10]]
+
+"hard rock".split()
+
+# ["hard", "rock"]
+# so \s is the default delimiter then?
+
+"a,b,c,d".split(',')
+
+# ["a","b","c","d"]
+
+# I guess that answers my question
+
+```
+
+OK, interesting.
+
+Aliasing.
+
+```{python}
+A=B
+
+```
+
+aliases A with B. When you change anything in list A, it changes in B too.
+
+Cloning:
+
+```{python}
+B=A[:]
+# Again, it is simply referencing all elements of A
+```
+
+This will create an independent clone of A: B. A change in A will not induce a change in A, because they are now independent.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
