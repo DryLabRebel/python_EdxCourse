@@ -7,11 +7,6 @@ Course Notes for the IMB python short course
 print( "hello world" )
 ```
 
-Again, looks like I should be pretty familiar with all this stuff. I need to start actually coding.
-
-[//]: # ( OK, I think I see the problem now, when I start Rmd. python won't start --- WHY!? )
-[//]: # ( Same thing happened when I tried to execute a .py program from the command line -- I need to fix this )
-
 Before I finish this course:
 
 - Get python working (maybe it needs to be running inside a conda environment?)
@@ -575,7 +570,123 @@ PinkFloyd()
 
 print(ClaimedSales)
 
+# What's a comment in jelleybeans - not bad, a bit more contrast than apprentice
+
 ```
+
+### Objects and Classes ###
+
+All data types are objects. All objects have:
+
+- a type
+- an internal data representation
+- methods
+
+an object is an instance of a particular type.
+
+When we invoke an integer, we an invoking an 'int' object, which is of type 'int' (duh).
+
+Methods are invoked by appending a period at the end of the object.
+
+So, depending on the attributes of the object, some methods will work on it, some will not?
+
+So a class is *kind of* like a function. So what's the difference exactly?
+
+Class is a collection of objects, I think it's sinking in now. 
+
+`5` is an element, or object, of `<class int>`
+`dog` is an element, or object, of `<class str>`
+
+So you can define your own class - so far as I can tell this means, you can create a particular set of characteristics, to which a set of objects can be described by, or defined by.
+
+The followings are class members.
+
+1. Class Attributes
+2. Constructor
+3. Instance Attributes
+4. Properties
+5. Class Methods
+
+```{python}
+
+class ThisisANewClass:
+  <statement1>
+  <statement2>
+  ...
+  <statementn>
+
+```
+
+So the fucken video starts off talking about integers being 'types', and I can't see anywhere, where it clarifies that 'type' is effectively the same as 'class'. Are they different?
+
+So `sort()` is a method, but `type()` is a function? - just came to this realization doing some stuff in IDLE.
+
+And so, according to some stack QnA, 'types' are basically builtins, and classes are user defined, but in this day and age there are no substantive differences. I suppose you can still think of types as builtin, and written in C, whearas classes are mostly user defined. But they now work the same way, and there is virtually no practical difference?
+
+So now we're going to create our own classes 'circle' and 'rectangle'.
+
+So, to make a circle, we need a radius. We can also add a colour, just to make things fancy.
+
+so our attributes are 'radius' and 'color' (keeping it American).
+
+Rectangle needs 'height' and 'width' and 'color'
+
+```{python}
+
+class Circle(object):
+
+  def __init__(self,radius,color):
+    self.radius = radius;
+    self.color = color;
+
+# __init__ is a constructor - this tells python you are making a new class (so it is sort of required to instantiate a class? Am I using 'instantiate' correctly here?
+
+class Rectangle(object):
+
+  def __init__(self,height,width,color):
+    self.height = height;
+    self.width = width;
+    self.color = color;
+
+```
+
+```{python}
+
+# Create a class
+Redcircle = Circle(10,'red')
+Redcircle
+# <__main__.Circle object at 0x7fc1ec7a0550
+# call the attributes
+Redcircle.radius
+# 10
+Redcircle.color
+# 'red'
+C2 = Circle(5, 'blue')
+C2.color
+# 'blue'
+# change the attribute directly
+C2.color = 'green'
+C2.color
+# 'green'
+
+```
+
+Methods are functions which can change the attributes of the object.
+
+```{python}
+
+class Circle(object):
+
+  def __init__(self,radius,color):
+    self.radius = radius;
+    self.color = color;
+
+  def add_radius(self,r):
+    self.radius=self.radius+r;
+
+```
+
+Phew. That video was intense.
 
 
 
