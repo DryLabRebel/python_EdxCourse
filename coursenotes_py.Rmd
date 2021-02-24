@@ -688,9 +688,113 @@ class Circle(object):
 
 Phew. That video was intense.
 
+> Functions *do* specific things, classes *are* specific things. 
 
+From [this Stack Question](https://stackoverflow.com/questions/18202818/classes-vs-functions)
 
+```{python}
 
+class Circle(object):
+  def __init__ (self, radius=3, color='blue'):
+    self.radius = radius
+    self.color = color
+  def add_radius(self, r):
+    self.radius = self.radius+r
+    return(self.radius)
+  def DrawCircle(self):
+    plt.gca().add_patch(plt.Circle((0,0), radius = self.radius, fc=self.color))
+    plt.axis('scaled')
+    plt.show()
+
+```
+
+[//]: # ( This is taking too long - I need to work through the labs faster, and take note of what is difficult, and work on improving that later with practise )
+[//]: # ( Man some colorschemes are *weird!* )
+
+[python exceptions](https://docs.python.org/3/library/exceptions.html) - looks useful!
+
+```{python}
+a = 1
+
+try:
+    b = int(input("Please enter a number to divide a"))
+    a = a/b
+    print("Success a=",a)
+except ZeroDivisionError:
+    print("The number you provided cant divide 1 because it is 0")
+except ValueError:
+    print("You did not provide a number")
+except:
+    print("Something went wrong")
+
+```
+
+Module 4
+--------
+
+Working with Data in python. OK, so we're getting onto the Data Science stuff now.
+
+I think those last 2 modules went pretty quick and dirty through the basics. I wonder if a more extensive course will go a little slower through, and give you more time to build your intuition around a topic before hitting you with a heavy lab exercise?
+
+### Reading files with open ###
+
+Open function.
+
+The second argument is the 'mode'
+
+```{python}
+
+file1 = open("path/to/file.txt","w")
+
+# w = writing
+# r = reading
+# a = appending
+
+```
+
+Interesting.
+
+    file1.name
+
+Returns a string containing the file name "path/to/gile.txt"
+
+    file1.mode
+
+Indicates the mode 'w' for example.
+
+'with' statement.
+
+You can open a file, for a specific purpose, and then it closes when it is done:
+
+```{python}
+
+with open("path/to/file.txt","w") as file1:
+
+  file_stuff = file1.read()
+  print(file_stuff)
+
+print(file1.closed)
+print(file_stuff)
+
+```
+
+So, python can 'open' a file in read, write and append mode, but it can also store the contents of the file into an object. That's actually pretty cool.
+
+I wonder if the use of loops is unintuitive to me, because I'm used to R parallelizing over everything.
+
+I am starting to see how in python, everything is looped.
+
+So basically, you can access and read files, and do lots of stuff to them.
+
+I *really* need to do some real stuff with python, get used to doing this stuff.
+
+Closing files at the end is very important!
+
+> Using the with statement is better practice, it automatically closes the file even if the code encounters an exception. The code will run everything in the indent block then close the file object.
+
+Yep, so can open the file, save the contents into an object, and then close it, and still have the contents in an object (duh).
+
+But it means you probably like to read in a file, then perform changes to the saved object in python, then write the object to the old, or a new file.
 
 
 
