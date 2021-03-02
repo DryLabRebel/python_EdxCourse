@@ -796,6 +796,73 @@ Yep, so can open the file, save the contents into an object, and then close it, 
 
 But it means you probably like to read in a file, then perform changes to the saved object in python, then write the object to the old, or a new file.
 
+### Writing ###
+
+Can use method `.write` to write to file object.
+
+```{python}
+
+with open("path/to/file.txt", "w") as file1:
+
+  file1.write("This is line A") # OK, so the 'r' and 'w' are basically the equivalent of read.data() and write() in R
+
+
+lines = ["This is line A\n","This is line B\n","This is line C\n"]
+
+with open("path/to/file2.txt", "w") as file2:
+
+  for line in lines:
+    File2.write(line)
+
+# see this where I still get confused. What is with all this ambiguity? How does python know that 'line' represents a 'line in the file'. How often does it do this kind of thing? Are the other keywords that can be used in for loops to perform certain operations? Or am I just missing soemthig simple?
+
+
+```
+
+We can copy files too.
+
+```{python}
+
+with open("path/to/readfile","r") as readfile:
+  with open("path/to/writefile","w") as writefile:
+    for line in readfile:
+      writefile.write(line)
+
+```
+
+Nice, now we're getting somewhere. `a+, w+, r+`.
+
+So you can also 'control' the locatio of your 'cursor' in the file, using python.
+
+```{python}
+
+.tell()
+.seek(offset,from)
+
+```
+
+### Loading Data with Pandas ###
+
+OK, so this looks clearly designed to be familiar to R users.
+
+```{python}
+import pandas as pd
+
+csv_path='path/to/file.csv'
+
+df = pd.read_csv(csv_path)
+
+# Can also do
+
+excel_path='path/to/file.excel'
+
+df = pd.read_excel(excel_path)
+
+
+```
+
+
+
 
 
 ---
