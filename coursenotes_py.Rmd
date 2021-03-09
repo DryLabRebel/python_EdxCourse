@@ -178,7 +178,7 @@ A fellow student shared [this](https://stackabuse.com/lists-vs-tuples-in-python/
 
 It's becoming increasingly evident that I should find other ways to practise coding, other than the labs here.
 
-Python is obviously more complex than SQL, and the labs are auite simple.
+Python is obviously more complex than SQL, and the labs are quite simple.
 
 ### Data Structures ###
 
@@ -711,7 +711,7 @@ class Circle(object):
 ```
 
 [//]: # ( This is taking too long - I need to work through the labs faster, and take note of what is difficult, and work on improving that later with practise )
-[//]: # ( Man some colorschemes are *weird!* )
+[//]: # ( Man some Vim colorschemes are *weird!* )
 
 [python exceptions](https://docs.python.org/3/library/exceptions.html) - looks useful!
 
@@ -1123,11 +1123,87 @@ The result is a dictionary that includes the translation word count and characte
 
 The result is a dictionary. We can obtain the string with the text as follows. We can then translate the text to French as follows. Thanks for watching this video.
 
-
-
 Cool, so how do you do all this when you're not using an IBM account??
 
+### HTTP ###
 
+So, we've just briefly touched on HTTP. The obvious question is why is it important to add 5 minutes about this at the end of a python for data science course?
+
+The obvious answer is that as a data scientist, one of the most broadly applicable ways of accessing data is publicly available data on the web. So it would be really important to have a least a vague familiarity with the process.
+
+Makes me wonder if their are Edx courses that dig deeper into this, that go into good detail on how to mine the web for multiple types of publicly available data, and how to get a hold of it, and pull into a dataset?
+
+It would be cool to know how to just surf the web for interesting data, and then know how to just pull it out whenever I wanted to.
+
+So it's helpful to think of the Web Adress as just pointing you to a directory (server). Which I already know, it does help demystify it thought when I think of it that way (because that is what it is!).
+
+What books/textbooks will help me understand all this further?
+  - That old, deprecated HTML book probably has some stuff in it
+  - I'll bet that RedHat, JavaScript and PhP books both have stuff in them too!
+
+Check [this out](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+```{python}
+# Definitely check this out
+import requests
+
+```
+
+OK, some cool interesting stuff. Definitely check out the HTTP request lab again when you want to
+play around with HTTP get, post and other requests in more detail.
+
+[Lab as a gist](https://gist.github.com/DryLabRebel/efe0de292268bacb9742a295ca957c0a)
+
+Cool.
+
+Lutz, Mark. Learning Python: Powerful Object-Oriented Programming. " O'Reilly Media, Inc.", 2013.
+
+[Introduction to Computer Science and Programming in Python](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/)
+
+Maybe the MIT Open Python and Computer Science Course is my next step?
+
+Going to have a crack at the final web scraping assignment too if I can
+
+Code for Web Scraping from Final Assignment:
+
+```{python}
+
+def get_basketball_stats(link='https://en.wikipedia.org/wiki/Michael_Jordan'):
+    # read the webpage 
+    response = requests.get(link)
+    # create a BeautifulSoup object to parse the HTML  
+    soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    # the player stats are defined  with the attribute CSS class set to 'wikitable sortable'; 
+    #therefore we create a tag object "table"
+    table=soup.find(class_='wikitable sortable')
+
+    #the headers of the table are the first table row (tr) we create a tag object that has the first row  
+    headers=table.tr
+    #the table column names are displayed  as an abbreviation; therefore we find all the abbr tags and returs an Iterator
+    titles=headers.find_all("abbr")
+    #we create a dictionary  and pass the table headers as the keys 
+    data = {title['title']:[] for title in titles}
+    #we will store each column as a list in a dictionary, the header of the column will be the dictionary key 
+
+    #we iterate over each table row by fining each table tag tr and assign it to the objed
+    for row in table.find_all('tr')[1:]:
+
+        #we iterate over each cell in the table, as each cell corresponds to a different column we all obtain the correspondin key corresponding the column n 
+        for key,a in zip(data.keys(),row.find_all("td")[2:]):
+            # we append each elment and strip any extra HTML contnet 
+            data[key].append(''.join(c for c in a.text if (c.isdigit() or c == ".")))
+
+    # we remove extra rows by finding the smallest list     
+    Min=min([len(x)  for x in data.values()])
+    #we convert the elements in the key to floats 
+    for key in data.keys():
+
+        data[key]=list(map(lambda x: float(x), data[key][:Min]))
+
+    return data
+```
+
+Have to make use of this somehow!
 
 
 ---
